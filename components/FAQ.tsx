@@ -82,10 +82,10 @@ export function FaqCtaSection() {
                     <span className="text-gray-400 mt-0.5">
                       {openIndex === index ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
                     </span>
-                    <span className="text-[#1a1a2e] font-medium text-[20px]">{faq.question}</span>
+                    <span className="text-[#1a1a2e] font-medium text-[15px]">{faq.question}</span>
                   </button>
                   {openIndex === index && (
-                    <div className="pb-5 pl-8 text-[#6b7280] text-lg leading-relaxed">{faq.answer}</div>
+                    <div className="pb-5 pl-8 text-[#6b7280] text-sm leading-relaxed">{faq.answer}</div>
                   )}
                 </div>
               ))}
@@ -102,10 +102,10 @@ export function FaqCtaSection() {
                     <span className="text-gray-400 mt-0.5">
                       {openIndex === index + 4 ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
                     </span>
-                    <span className="text-[#1a1a2e] font-medium text-[20px]">{faq.question}</span>
+                    <span className="text-[#1a1a2e] font-medium text-[15px]">{faq.question}</span>
                   </button>
                   {openIndex === index + 4 && (
-                    <div className="pb-5 pl-8 text-[#6b7280] text-lg leading-relaxed">{faq.answer}</div>
+                    <div className="pb-5 pl-8 text-[#6b7280] text-sm leading-relaxed">{faq.answer}</div>
                   )}
                 </div>
               ))}
@@ -115,7 +115,7 @@ export function FaqCtaSection() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-8 px-4 md:px-8 lg:px-16 bg-white">
+      <section className="px-4 md:px-8 bg-white py-2.5 lg:px-1.5">
         <div className="relative max-w-7xl mx-auto rounded-3xl overflow-hidden">
           {/* Background with gradient and stripes */}
           <div className="absolute inset-0 bg-gradient-to-br from-[#a8e6cf] via-[#b8f0d8] to-[#c8f4e0]">

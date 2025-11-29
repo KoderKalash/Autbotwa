@@ -100,7 +100,7 @@ export function FeaturesListSection() {
           {/* Right Content */}
           <div className="w-full lg:w-1/2">
             <p className="text-[#10b981] font-semibold text-base mb-4">Email Integration</p>
-            <h2 className="font-serif text-4xl md:text-5xl font-extralight text-gray-900 leading-tight mb-6">
+            <h2 className="font-serif text-4xl md:text-5xl text-gray-900 leading-tight mb-6 font-extralight">
               Manage Emails Without Leaving Your CRM
             </h2>
             <p className="text-gray-600 text-lg leading-relaxed">
@@ -188,7 +188,7 @@ export function FeaturesListSection() {
           {/* Right Content */}
           <div className="w-full lg:w-1/2">
             <p className="text-[#10b981] font-semibold text-base mb-4">Multi-User Collaboration</p>
-            <h2 className="font-serif text-4xl md:text-5xl font-extralight text-gray-900 leading-tight mb-6">
+            <h2 className="font-serif text-4xl md:text-5xl text-gray-900 leading-tight mb-6 font-extralight">
               Empower Your Team with Real-Time Sync
             </h2>
             <p className="text-gray-600 text-lg leading-relaxed">
@@ -316,7 +316,7 @@ export function FeaturesListSection() {
           {/* Right Content */}
           <div className="w-full lg:w-1/2">
             <p className="text-[#10b981] font-semibold text-base mb-4">Analytics & Reporting</p>
-            <h2 className="font-serif text-4xl md:text-5xl font-extralight text-gray-900 leading-tight mb-6">
+            <h2 className="font-serif text-4xl md:text-5xl text-gray-900 leading-tight mb-6 font-extralight">
               Understand Your Business Like Never Before
             </h2>
             <p className="text-gray-600 text-lg leading-relaxed">

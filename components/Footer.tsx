@@ -7,6 +7,7 @@ export function FooterSection() {
             {/* Footer container with rounded corners and green top border */}
             <div className="bg-[#1a2e35] rounded-t-[2rem] relative overflow-hidden">
 
+
                 {/* Diagonal geometric pattern overlay */}
                 <div className="absolute inset-0 opacity-10">
                     <svg className="w-full h-full" preserveAspectRatio="none">
@@ -43,7 +44,7 @@ export function FooterSection() {
                                         <path d="M2 12L12 17L22 12" stroke="white" strokeWidth="2" />
                                     </svg>
                                 </div>
-                                <span className="text-xl font-semibold text-[#f9f6f6]">Custo</span>
+                                <span className="text-xl font-semibold text-[#fcf9f9]">Custo</span>
                             </div>
 
                             {/* Description */}
@@ -189,7 +190,7 @@ export function FooterSection() {
                                     href="#"
                                     className="text-gray-400 hover:text-white transition-colors flex items-center gap-1 underline underline-offset-2"
                                 >
-                                    Get Featured
+                                    Get this template
                                     <svg className="w-3 h-3" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path
                                             d="M3 9L9 3M9 3H4M9 3V8"
@@ -200,7 +201,7 @@ export function FooterSection() {
                                         />
                                     </svg>
                                 </Link>
-                                <span className="text-gray-500">Want to collaborate?</span>
+                                <span className="text-gray-500">Or want to collaborate?</span>
                                 <Link
                                     href="#"
                                     className="text-gray-400 hover:text-white transition-colors flex items-center gap-1 underline underline-offset-2"
