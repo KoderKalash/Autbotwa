@@ -126,7 +126,7 @@ export function PricingSection() {
               key={plan.name}
               className={`relative bg-white rounded-2xl p-6 md:p-8 ${
                 plan.popular
-                  ? "shadow-xl md:-mt-4 md:pb-10 border-2 border-[#1a1a1a]/5"
+                  ? "shadow-xl md:-mt-4 md:pb-10 border-2 border-[#1a1a1a]"
                   : "shadow-lg border border-gray-100"
               }`}
               initial={{ opacity: 0, y: 50 }}

@@ -198,28 +198,22 @@ export function FeaturesListSection() {
                     </div>
                     <span className="text-gray-900 font-medium">Delta Innovations</span>
                   </div>
-                  {/* Sabrina cursor */}
+
+                  {/* Sabrina cursor - improved */}
                   <motion.div
-                    className="absolute -right-2 -top-2 flex items-center"
-                    initial={{ x: 20, y: 10 }}
-                    animate={
-                      inView2
-                        ? {
-                            x: [20, 20, 0],
-                            y: [10, 10, -8],
-                          }
-                        : {}
-                    }
-                    transition={{
-                      duration: 2,
-                      times: [0, 0.3, 1],
-                      ease: "easeOut",
-                    }}
+                    className="absolute -right-2 -top-3 flex items-center pointer-events-none"
+                    initial={{ opacity: 0, x: 10, y: 8 }}
+                    animate={inView2 ? { opacity: 1, x: [10, 6, 0], y: [8, 2, -6] } : {}}
+                    transition={{ duration: 0.6, times: [0, 0.6, 1], ease: "easeOut" }}
                   >
-                    <svg className="w-4 h-4 text-blue-500" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M5.5 3.21V20.8l5.74-5.79h8.26L5.5 3.21z" />
+                    {/* small sharp arrow */}
+                    <svg className="w-3 h-3 text-blue-500" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M3 2l6 18 2-7 7-2L3 2z" />
                     </svg>
-                    <span className="bg-blue-500 text-white text-xs px-2 py-1 rounded ml-1">Sabrina</span>
+
+                    <span className="bg-blue-500 text-white text-[10px] px-2 py-[3px] rounded ml-2 shadow-md">
+                      Sabrina
+                    </span>
                   </motion.div>
                 </motion.div>
 
@@ -264,17 +258,20 @@ export function FeaturesListSection() {
                     ))}
                   </div>
 
-                  {/* Jessie cursor */}
+                  {/* Jessie cursor - improved */}
                   <motion.div
-                    className="absolute right-[-70px] top-[72px] flex items-center"
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={inView2 ? { opacity: 1, x: 0 } : {}}
-                    transition={{ delay: 0.8, duration: 0.5 }}
+                    className="absolute -right-14 top-16 flex items-center pointer-events-none"
+                    initial={{ opacity: 0, x: 12, y: 6 }}
+                    animate={inView2 ? { opacity: 1, x: [12, 6, 0], y: [6, 2, 0] } : {}}
+                    transition={{ delay: 0.8, duration: 0.6, times: [0, 0.6, 1], ease: "easeOut" }}
                   >
-                    <svg className="w-4 h-4 text-green-500" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M5.5 3.21V20.8l5.74-5.79h8.26L5.5 3.21z" />
+                    <svg className="w-3 h-3 text-green-500" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M3 2l6 18 2-7 7-2L3 2z" />
                     </svg>
-                    <span className="bg-green-500 text-white text-xs px-2 py-1 rounded ml-1">Jessie</span>
+
+                    <span className="bg-green-500 text-white text-[10px] px-2 py-[3px] rounded ml-2 shadow-md">
+                      Jessie
+                    </span>
                   </motion.div>
                 </motion.div>
               </div>
