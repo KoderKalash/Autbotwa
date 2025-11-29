@@ -1,6 +1,7 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef } from "react"
+import { motion, useInView, AnimatePresence } from "framer-motion"
 import { Plus, Minus } from "lucide-react"
 
 const faqs = [
@@ -48,6 +49,10 @@ const faqs = [
 
 export function FaqCtaSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
+  const faqRef = useRef(null)
+  const ctaRef = useRef(null)
+  const faqInView = useInView(faqRef, { once: true, margin: "-100px" })
+  const ctaInView = useInView(ctaRef, { once: true, margin: "-100px" })
 
   const toggleFaq = (index: number) => {
     setOpenIndex(openIndex === index ? null : index)
@@ -59,55 +64,102 @@ export function FaqCtaSection() {
   return (
     <>
       {/* FAQ Section */}
-      <section className="py-20 md:py-28 bg-white">
+      <section ref={faqRef} className="py-20 md:py-28 bg-white">
         <div className="max-w-6xl mx-auto px-6">
           {/* Header */}
-          <div className="text-center mb-16">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            animate={faqInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6 }}
+          >
             <h2 className="font-serif text-3xl md:text-4xl lg:text-[42px] font-bold text-[#1a1a2e] mb-4">
               Frequently Asked Questions
             </h2>
             <p className="text-[#6b7280] text-base md:text-lg">Find quick answers to common questions about Custo.</p>
-          </div>
+          </motion.div>
 
           {/* FAQ Grid */}
           <div className="grid md:grid-cols-2 gap-x-16 gap-y-0">
             {/* Left Column */}
             <div>
               {leftFaqs.map((faq, index) => (
-                <div key={index} className="border-b border-gray-200">
-                  <button
+                <motion.div
+                  key={index}
+                  className="border-b border-gray-200"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={faqInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  <motion.button
                     onClick={() => toggleFaq(index)}
                     className="w-full py-5 flex items-start gap-4 text-left hover:opacity-70 transition-opacity"
+                    whileHover={{ x: 5 }}
                   >
-                    <span className="text-gray-400 mt-0.5">
+                    <motion.span
+                      className="text-gray-400 mt-0.5"
+                      animate={{ rotate: openIndex === index ? 180 : 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
                       {openIndex === index ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
-                    </span>
+                    </motion.span>
                     <span className="text-[#1a1a2e] font-medium text-[15px]">{faq.question}</span>
-                  </button>
-                  {openIndex === index && (
-                    <div className="pb-5 pl-8 text-[#6b7280] text-sm leading-relaxed">{faq.answer}</div>
-                  )}
-                </div>
+                  </motion.button>
+                  <AnimatePresence>
+                    {openIndex === index && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="pb-5 pl-8 text-[#6b7280] text-sm leading-relaxed">{faq.answer}</div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
               ))}
             </div>
 
             {/* Right Column */}
             <div>
               {rightFaqs.map((faq, index) => (
-                <div key={index + 4} className="border-b border-gray-200">
-                  <button
+                <motion.div
+                  key={index + 4}
+                  className="border-b border-gray-200"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={faqInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: 0.2 + index * 0.1 }}
+                >
+                  <motion.button
                     onClick={() => toggleFaq(index + 4)}
                     className="w-full py-5 flex items-start gap-4 text-left hover:opacity-70 transition-opacity"
+                    whileHover={{ x: 5 }}
                   >
-                    <span className="text-gray-400 mt-0.5">
+                    <motion.span
+                      className="text-gray-400 mt-0.5"
+                      animate={{ rotate: openIndex === index + 4 ? 180 : 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
                       {openIndex === index + 4 ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
-                    </span>
+                    </motion.span>
                     <span className="text-[#1a1a2e] font-medium text-[15px]">{faq.question}</span>
-                  </button>
-                  {openIndex === index + 4 && (
-                    <div className="pb-5 pl-8 text-[#6b7280] text-sm leading-relaxed">{faq.answer}</div>
-                  )}
-                </div>
+                  </motion.button>
+                  <AnimatePresence>
+                    {openIndex === index + 4 && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="pb-5 pl-8 text-[#6b7280] text-sm leading-relaxed">{faq.answer}</div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -115,8 +167,14 @@ export function FaqCtaSection() {
       </section>
 
       {/* CTA Section */}
-      <section className="px-4 md:px-8 bg-white py-2.5 lg:px-1.5">
-        <div className="relative max-w-7xl mx-auto rounded-3xl overflow-hidden">
+      <section ref={ctaRef} className="px-2 bg-white pb-2">
+        <motion.div
+          className="relative mx-auto rounded-3xl overflow-hidden"
+          initial={{ opacity: 0, y: 40 }}
+          animate={ctaInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          whileHover={{ scale: 1.005 }}
+        >
           {/* Background with gradient and stripes */}
           <div className="absolute inset-0 bg-gradient-to-br from-[#a8e6cf] via-[#b8f0d8] to-[#c8f4e0]">
             {/* Diagonal stripes pattern */}
@@ -138,19 +196,36 @@ export function FaqCtaSection() {
 
           {/* Content */}
           <div className="relative z-10 py-20 md:py-28 px-6 text-center">
-            <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl font-bold text-[#1a1a2e] mb-4">
+            <motion.h2
+              className="font-serif text-2xl md:text-3xl lg:text-4xl font-bold text-[#1a1a2e] mb-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={ctaInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.2 }}
+            >
               Start Growing with Custo Now
-            </h2>
-            <p className="text-[#4a5568] text-sm md:text-base max-w-xl mx-auto mb-8 leading-relaxed">
+            </motion.h2>
+            <motion.p
+              className="text-[#4a5568] text-sm md:text-base max-w-xl mx-auto mb-8 leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              animate={ctaInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.3 }}
+            >
               Take control of your sales pipeline, automate tasks, and build
               <br className="hidden md:block" />
               stronger customer relationships with ease.
-            </p>
-            <button className="bg-[#1a1a2e] text-white px-8 py-3 rounded-full text-sm font-medium hover:bg-[#2d2d44] transition-colors">
+            </motion.p>
+            <motion.button
+              className="bg-[#1a1a2e] text-white px-8 py-3 rounded-full text-sm font-medium hover:bg-[#2d2d44] transition-colors"
+              initial={{ opacity: 0, y: 20 }}
+              animate={ctaInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.4 }}
+              whileHover={{ scale: 1.08, boxShadow: "0 10px 30px rgba(0,0,0,0.2)" }}
+              whileTap={{ scale: 0.95 }}
+            >
               Start for Free
-            </button>
+            </motion.button>
           </div>
-        </div>
+        </motion.div>
       </section>
     </>
   )
